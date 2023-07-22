@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdargs.h>
+#include <stdarg.h>
 #include <stdlib.h>
 #include "main.h"
 #include <unistd.h>
@@ -13,22 +13,27 @@
  */
 int _printf(const char *format, ...)
 {
-	//va_list args;
+	va_list args;
 	int fd;
 	int i;
 	int count;
 
 	fd = 1;
-	if(format == NULL)
+	if (format == NULL)
 	{
 		write(fd, "", 1);
 		return (0);
 	}
 	count = 0;
+	va_start(args, format);
 	for (i = 0; format[i] != '\0'; i++)
 	{
-		write(fd, &format[i], 1);
+		if (format[i] == '%')
+			formatter(format[++i], args);
+		else
+			write(fd, &format[i], 1);
 		count++;
 	}
+	va_end(args);
 	return (count);
 }
