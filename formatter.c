@@ -18,7 +18,7 @@ char c;
 switch (i)
 {
 case 'c':
-c = va_arg(char)(args, int);
+c = va_arg (char) (args, int);
 write(1, &c, 1);
 break;
 case 's':
