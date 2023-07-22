@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdarg.h>
+#include "main.h"
+
 /**
  * formatter -  function that finds formats for _printf
  * @i: variable
