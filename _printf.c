@@ -29,10 +29,14 @@ int _printf(const char *format, ...)
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
-			formatter(format[++i], args);
+		{
+			count += formatter(format[++i], args);
+		}
 		else
+		{
 			write(fd, &format[i], 1);
-		count++;
+			count++;
+		}
 	}
 	va_end(args);
 	return (count);

@@ -11,30 +11,32 @@
  * @args: argument
  * Return: NULL
  */
-void formatter(char i, va_list args)
+int formatter(char i, va_list args)
 {
-char *ss;
-char c;
-switch (i)
-{
-case 'c':
-c = va_arg(args, int);
-write(1, &c, 1);
-break;
-case 's':
-ss = va_arg(args, char *);
-if (ss == NULL)
-{
-write(1, "(null)", 6);
-break;
-}
-write(1, ss, _strlen(ss));
-break;
-case '%':
-write(1, "%", 1);
-break;
-default:
-write(1, "%", 1);
-write(1, &i, 1);
-}
+	char *ss;
+	char c;
+
+	switch (i)
+	{
+		case 'c':
+		    c = va_arg(args, int);
+			write(1, &c, 1);
+			return (1);
+		case 's':
+			ss = va_arg(args, char *);
+			if (ss == NULL)
+			{
+				write(1, "(null)", 6);
+				return (6);
+			}
+			write(1, ss, _strlen(ss));
+			return (_strlen(ss));
+		case '%':
+			write(1, "%", 1);
+			return (1);
+		default:
+			write(1, "%", 1);
+			write(1, &i, 1);
+			return (2);
+	}
 }
