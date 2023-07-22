@@ -14,7 +14,7 @@
 void formatter(char i, va_list args)
 {
 char *ss;
-int c;
+char c;
 switch (i)
 {
 case 'c':
