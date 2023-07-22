@@ -13,13 +13,13 @@
  */
 int _printf(const char *format, ...)
 {
-	//va_list args;
+	va_list args;
 	int fd;
 	int i;
 	int count;
 
 	fd = 1;
-	if(format == NULL)
+	if (format == NULL)
 	{
 		write(fd, "", 1);
 		return (0);
