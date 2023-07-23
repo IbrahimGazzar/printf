@@ -37,6 +37,6 @@ char *num_to_string(int num)
 		str[i--] = ((num % (div * 10)) / div) + '0';
 	if (i == 0)
 		str[i] = '-';
-	str[len + 1] = '\0';
+	str[len] = '\0';
 	return (str);
 }
