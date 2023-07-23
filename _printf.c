@@ -17,6 +17,7 @@ int _printf(const char *format, ...)
 	int fd;
 	int i;
 	int count;
+	int formadd;
 
 	fd = 1;
 	if (format == NULL)
@@ -27,7 +28,10 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			count += formatter(format[++i], args);
+			formadd = formatter(format[++i], args);
+			if (formadd == -1)
+				return (-1);
+			count += formadd;
 		}
 		else
 		{
