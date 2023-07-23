@@ -6,7 +6,10 @@
 #include "main.h"
 
 /**
+ * num_to_string - creates a string that represents a given integer
+ * @num: integer to be represented
  *
+ * Return: The representative string
  */
 char *num_to_string(int num)
 {
