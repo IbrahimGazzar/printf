@@ -30,6 +30,6 @@ char *num_to_string(int num)
 	if (num < 0)
 		str[0] = '-';
 	for (div = 1; num % div < num; div *= 10)
-		str[i--] = (num % (div * 10)) / div;
+		str[i--] = ((num % (div * 10)) / div) + 48;
 	return (str);
 }
