@@ -20,10 +20,7 @@ int _printf(const char *format, ...)
 
 	fd = 1;
 	if (format == NULL)
-	{
-		write(fd, "", 1);
-		return (0);
-	}
+		return (-1);
 	count = 0;
 	va_start(args, format);
 	for (i = 0; format[i] != '\0'; i++)
