@@ -19,20 +19,24 @@ char *num_to_string(int num)
 	int len;
 
 	if (num == 0)
-		return ("0");
+	{
+		str = "0";
+		return (str);
+	}
 	len = 0;
 	if (num < 0)
 	{
+		num = -num;
 		len++;
-		num = 0 - num;
 	}
 	for (div = 1; num % div < num; div *= 10)
 		len++;
 	str = malloc(sizeof(char) * (len + 1));
 	i = len - 1;
-	if (num < 0)
-		str[0] = '-';
 	for (div = 1; num % div < num; div *= 10)
-		str[i--] = ((num % (div * 10)) / div) + 48;
+		str[i--] = ((num % (div * 10)) / div) + '0';
+	if (i == 0)
+		str[i] = '-';
+	str[len + 1] = '\0';
 	return (str);
 }
