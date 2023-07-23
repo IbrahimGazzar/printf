@@ -15,6 +15,7 @@ int formatter(char i, va_list args)
 {
 	char *ss;
 	char c;
+        int len;
 
 	switch (i)
 	{
@@ -29,8 +30,15 @@ int formatter(char i, va_list args)
 				write(1, "(null)", 6);
 				return (6);
 			}
-			write(1, ss, _strlen(ss));
-			return (_strlen(ss));
+			len = _strlen(ss);
+			write(1, ss, len);
+			return (len);
+		case 'i':
+		case 'd':
+			ss = num_to_string(va_arg(args, int));
+			len = _strlen(ss);
+			write(1, ss, len);
+			return (len);
 		case '%':
 			write(1, "%", 1);
 			return (1);
