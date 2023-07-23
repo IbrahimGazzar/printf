@@ -15,7 +15,7 @@ int formatter(char i, va_list args)
 {
 	char *ss;
 	char c;
-        int len;
+	int len;
 
 	switch (i)
 	{

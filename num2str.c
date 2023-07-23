@@ -1,8 +1,8 @@
-#include stdio.h
-#include string.h
-#include stdlib.h
-#include unistd.h
-#include stdarg.h
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <stdarg.h>
 #include "main.h"
 
 /**
@@ -13,32 +13,11 @@
  */
 char *num_to_string(int num)
 {
-    char *str;
-    int i;
-    int div;
-    int len;
+	char *str;
+	int i;
+	int div;
+	int len;
 
-    if (num == 0)
-    {
-        str = "0";
-        return (str);
-    }
-    len = 0;
-    if (num < 0)
-    {
-        num = -num;
-        len++;
-    }
-    for (div = 1; num % div < num; div *= 10)
-        len++;
-    str = malloc(sizeof(char) * (len + 1));
-    i = len - 1;
-    for (div = 1; num % div < num; div *= 10)
-        str[i--] = ((num % (div * 10)) / div) + '0';
-    if (i == 0)
-        str[i] = '-';
-    str[len + 1] = '\0';
-    return (str);
 	if (num == 0)
 	{
 		str = "0";
