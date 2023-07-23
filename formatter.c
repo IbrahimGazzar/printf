@@ -26,8 +26,8 @@ int formatter(char i, va_list args)
 			ss = va_arg(args, char *);
 			if (ss == NULL)
 			{
-				write(1, "(nil)", 5);
-				return (5);
+				write(1, "(null)", 6);
+				return (6);
 			}
 			write(1, ss, _strlen(ss));
 			return (_strlen(ss));
