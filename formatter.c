@@ -37,6 +37,6 @@ int formatter(char i, va_list args)
 		default:
 			write(1, "%", 1);
 			write(1, &i, 1);
-			return (2);
+			return (1);
 	}
 }
