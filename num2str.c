@@ -26,6 +26,7 @@ char *num_to_string(int num)
 	{
 		if (num == INT_MIN)
 		{
+			str = "-2147483648";
 			return (str);
 		}
 		len++;
