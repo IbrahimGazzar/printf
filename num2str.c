@@ -11,40 +11,37 @@
  * @num: integer to be represented
  * Return: The representative string
  */
-char *num_to_string(int num)
+char *num_to_string(int num, char *str)
 {
-	char *str, *start, *end, temp;
-	int i, len, is_negative, div;
+	char *start, *end, temp, *ptr;
+	int i, len, is_negative;
 
 	if (num == 0)
-		return ("0");
+	{
+		str = "0";
+		return (str);
+	}
 	len = 0;
 	is_negative = 0;
+	ptr = str;
 	if (num < 0)
 	{
 		if (num == INT_MIN)
-		{
-			str = "-2147483648";
-			return (str);
-		}
+			return("-2147483648");
 		len++;
 		num = 0 - num;
 		is_negative = 1;
 	}
-	div = num;
-	do {
-		len++;
-	} while ((div /= 10) > 0);
-	str = malloc(sizeof(char) * (len + 1));
-	i = 0;
-	do {
-		str[i++] = (num % 10) + '0';
-	} while ((num /= 10) > 0);
+	for (i = 0; num > 0; i++)
+	{
+		*ptr++ = (num % 10) + '0';
+		num /= 10;
+	}
 	if (is_negative == 1)
-		str[i++] = '-';
-	str[i] = '\0';
-	end = &str[i - 1];
-	start = &str[0];
+		*ptr++ = '-';
+	*ptr = '\0';
+	end = ptr - 1;
+	start = str;
 	while (start < end)
 	{
 		temp = *start;

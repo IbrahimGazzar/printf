@@ -30,7 +30,10 @@ int _printf(const char *format, ...)
 		{
 			formadd = formatter(format[++i], args);
 			while (formadd == -2)
+			{
+				count++;
 				formadd = formatter(format[++i], args);
+			}
 			if (formadd == -1)
 				return (-1);
 			count += formadd;
