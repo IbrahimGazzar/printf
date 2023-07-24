@@ -14,20 +14,15 @@
  */
 char *num_to_string(int num)
 {
-	char *str;
-	int i;
-	int len;
-	int is_negative;
-	char *start;
-	char *end;
-	char temp;
-	int div;
+	char *str, *start, *end, temp;
+	int i, len, is_negative, div;
 
 	if (num == 0)
 	{
 		str = "0";
 		return (str);
 	}
+
 	len = 0;
 	is_negative = 0;
 	if (num < 0)
@@ -41,29 +36,32 @@ char *num_to_string(int num)
 		num = 0 - num;
 		is_negative = 1;
 	}
+
 	div = num;
-	do
-	{
+	do {
 		len++;
 		div /= 10;
 	} while (div > 0);
+
 	str = malloc(sizeof(char) * (len + 1));
 	i = 0;
-	do
-	{
+	do {
 		str[i++] = (num % 10) + '0';
 		num /= 10;
 	} while (num > 0);
+
 	if (is_negative == 1)
 		str[i++] = '-';
 	str[i] = '\0';
+
 	end = &str[i - 1];
-	start = &str[0] ;
+	start = &str[0];
 	while (start < end)
 	{
 		temp = *start;
 		*(start++) = *end;
 		*(end--) = temp;
 	}
+
 	return (str);
 }
