@@ -17,9 +17,7 @@ char *num_to_string(int num)
 	int i, len, is_negative, div;
 
 	if (num == 0)
-	{
 		return ("0");
-	}
 	len = 0;
 	is_negative = 0;
 	if (num < 0)
@@ -36,14 +34,12 @@ char *num_to_string(int num)
 	div = num;
 	do {
 		len++;
-		div /= 10;
-	} while (div > 0);
+	} while ((div /= 10) > 0);
 	str = malloc(sizeof(char) * (len + 1));
 	i = 0;
 	do {
 		str[i++] = (num % 10) + '0';
-		num /= 10;
-	} while (num > 0);
+	} while ((num /= 10) > 0);
 	if (is_negative == 1)
 		str[i++] = '-';
 	str[i] = '\0';
