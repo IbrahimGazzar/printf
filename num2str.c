@@ -9,6 +9,7 @@
 /**
  * num_to_string - creates a string that represents a given integer
  * @num: integer to be represented
+ * @str: empty string to be filled
  * Return: The representative string
  */
 char *num_to_string(int num, char *str)
@@ -27,7 +28,7 @@ char *num_to_string(int num, char *str)
 	if (num < 0)
 	{
 		if (num == INT_MIN)
-			return("-2147483648");
+			return ("-2147483648");
 		len++;
 		num = 0 - num;
 		is_negative = 1;
