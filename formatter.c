@@ -43,6 +43,7 @@ int formatter(char i, va_list args)
 			write(1, "%", 1);
 			return (1);
 		case ' ':
+			return (-2);
 		case '\0':
 			return (-1);
 		default:

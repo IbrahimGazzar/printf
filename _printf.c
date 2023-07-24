@@ -29,6 +29,8 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			formadd = formatter(format[++i], args);
+			while (formadd == -2)
+				formadd = formatter(format[++i], args);
 			if (formadd == -1)
 				return (-1);
 			count += formadd;
