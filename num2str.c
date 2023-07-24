@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdarg.h>
+#include <limits.h>
 #include "main.h"
 
 /**
@@ -31,6 +32,11 @@ char *num_to_string(int num)
 	is_negative = 0;
 	if (num < 0)
 	{
+		if (num == INT_MIN)
+		{
+			str = "-2147483648";
+			return (str);
+		}
 		len++;
 		num = 0 - num;
 		is_negative = 1;
