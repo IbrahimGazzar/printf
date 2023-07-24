@@ -15,8 +15,12 @@ char *num_to_string(int num)
 {
 	char *str;
 	int i;
-	int div;
 	int len;
+	int is_negative;
+	char *start;
+	char *end;
+	char temp;
+	int div;
 
 	if (num == 0)
 	{
@@ -24,19 +28,36 @@ char *num_to_string(int num)
 		return (str);
 	}
 	len = 0;
+	is_negative = 0;
 	if (num < 0)
 	{
-		num = -num;
 		len++;
+		num = 0 - num;
+		is_negative = 1;
 	}
-	for (div = 1; num % div < num; div *= 10)
+	div = num;
+	do
+	{
 		len++;
+		div /= 10;
+	} while (div > 0);
 	str = malloc(sizeof(char) * (len + 1));
-	i = len - 1;
-	for (div = 1; num % div < num; div *= 10)
-		str[i--] = ((num % (div * 10)) / div) + '0';
-	if (i == 0)
-		str[i] = '-';
-	str[len] = '\0';
+	i = 0;
+	do
+	{
+		str[i++] = (num % 10) + '0';
+		num /= 10;
+	} while (num > 0);
+	if (is_negative == 1)
+		str[i++] = '-';
+	str[i] = '\0';
+	end = &str[i - 1];
+	start = &str[0] ;
+	while (start < end)
+	{
+		temp = *start;
+		*(start++) = *end;
+		*(end--) = temp;
+	}
 	return (str);
 }
