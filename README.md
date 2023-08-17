@@ -12,4 +12,5 @@ The _printf function prints a given string literal, and handle the formatting fo
 
 %c: character
 %s: string
-
+%d: signed integer
+%i: decimal integer
